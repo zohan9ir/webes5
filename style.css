@@ -1,7 +1,7 @@
 html{
 text-align:center;
 margin:0 auto;
-background-color:;
+background-color:darkblue;
 background-image: url("Y6LByv.jpg");
 background-repeat: no-repeat;
 background-attachment: fixed;
@@ -126,6 +126,10 @@ nav{
 overflow-x: auto; /* Desplazamiento horizontal automático */
 overflow-y: hidden; /* Ocultar desplazamiento vertical */
 white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+.tituloprincipalh1{
+font-size:90%;
 }
 
 }
