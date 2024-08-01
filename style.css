@@ -32,6 +32,8 @@ width:93%;
 .tituloprincipalh1{
 font-family:arial;
 color:black;
+width:21%;
+margin:-9px;
 }
 
 .derechita{
@@ -135,6 +137,9 @@ white-space: nowrap; /* Evita que el texto se divida en varias líneas */
 
 .tituloprincipalh1{
 font-size:90%;
+width:35%;
+margin:-18px;
+margin-left:0px;
 }
 
 }
