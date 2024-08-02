@@ -137,9 +137,10 @@ white-space: nowrap; /* Evita que el texto se divida en varias líneas */
 
 .tituloprincipalh1{
 font-size:90%;
-width:35%;
-margin:-18px;
-margin-left:0px;
+width:23%;
+top:5px;
+left:23px;
+position:absolute;
 }
 
 }
