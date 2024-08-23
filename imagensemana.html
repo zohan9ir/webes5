@@ -1,18 +1,66 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<style>
-.divultimo + div{
-visibility:hidden;
-}
-</style>
-</head>
-<body style="color:#FFFFFF; font-family:arial; background-color:blue; overflow-y: hidden;">
-<center>
-<h3>IMAGEN DE LA SEMANA:</h3>
-<img src="imagensemana/wtf.jpg" style="height:80%; width:auto;">
-</center>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imágenes Aleatorias</title>
+    <style>
 
-<!-- div paraquitar la publici de 00 -->
-<div class="divultimo"></div>
+        #imagenAleatoria {
+            object-fit:fill;
+            height:320px;
+        }
+
+/* Pantallas de 800px o inferior */
+
+@media only screen and (max-width: 800px) {
+        #imagenAleatoria {
+            object-fit:fill;
+            height:221px;
+        }
+}
+
+    </style>
+</head>
+<body style="color:#FFFFFF; font-family:arial; background-color:blue; overflow-y: hidden; overflow-x: hidden;">
+<center>
+<div>
+    <h3>IMAGEN RANDOM</h3>
+    <img id="imagenAleatoria" src="" alt="Imagen aleatoria">
+
+    <script>
+        // Lista de URLs de imágenes
+        const imagenes = [
+            'imagensemana/16938856_1280141578736340_1611978863815638461_n.jpg',
+            'imagensemana/28276968_562999357409549_8636190577158997763_n.jpg',
+            'imagensemana/28279855_2031114213835081_8412538566970370944_n.jpg',
+            'imagensemana/maxresdefault.jpg',
+            'imagensemana/tranquilo.jpg',
+            'imagensemana/wtf.jpg',
+            'imagensemana/Bob millonario - copia.jpg',
+            'imagensemana/Patricio llorando.gif',
+            'imagensemana/5998e9765177ec0ddd59fb9580f438481c58486f_hq.jpg',
+            'imagensemana/28378272_1800265256692049_9072622293367850222_n.jpg'
+        ];
+
+        // Función para obtener una imagen aleatoria
+        function obtenerImagenAleatoria() {
+            const indiceAleatorio = Math.floor(Math.random() * imagenes.length);
+            return imagenes[indiceAleatorio];
+        }
+
+        // Función para actualizar la imagen en la página
+        function actualizarImagen() {
+            const imagen = document.getElementById('imagenAleatoria');
+            const urlNuevaImagen = obtenerImagenAleatoria();
+            imagen.src = urlNuevaImagen;
+            imagen.alt = 'Imagen aleatoria: ' + urlNuevaImagen;
+        }
+
+        // Cargar una imagen aleatoria cuando se carga la página
+        document.addEventListener("DOMContentLoaded", actualizarImagen);
+    </script>
+</div>
+<center>
 </body>
 </html>
