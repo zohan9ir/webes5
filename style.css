@@ -21,6 +21,7 @@ border-radius:25px;
 width: 80%;
 cursor:default;
 font-family:arial;
+background-image: linear-gradient(to bottom right, #a7db09, yellow, #a7db09);
 }
 
 #contenedor{
@@ -37,7 +38,7 @@ margin:-9px;
 }
 
 .derechita{
-float: right; width: 58%; text-align:left; padding-right: 2%; padding-left:2%; background-color:#a7db09;
+float: right; width: 58%; text-align:left; padding-right: 2%; padding-left:2%;
 }
 
 .izquierdita{
