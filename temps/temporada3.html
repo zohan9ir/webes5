@@ -12,18 +12,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style>
-
+#searchBox{
+position:fixed;
+top:0px;
+width:99%;
+background-color:orange;
+}
 </style>
 
 </head>
 <body>
 <audio autoplay src="../sonido.mp3"></audio>
 
-<p>Temporada 3: (reportar fallas)</p>
-<p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008234249if_/http://www.bitview.net/videos/X2qMu8GEYsyKkY87KGY0.mp4" target="visor">01 Las algas siempre son verdes</a></p>
+<div id="searchBox">
+<input type="text" id="searchInput" placeholder="Buscar episodio...">
+<button onclick="buscar()">Buscar</button>
+<button onclick="prev()">↑</button>
+<button onclick="next()">↓</button>
+<span id="contador"></span>
+<h4>Temporada 3:</h4>
+</div>
+
+<div id="contenido">
+
+<p style="padding-top:68px;"><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008234249if_/http://www.bitview.net/videos/X2qMu8GEYsyKkY87KGY0.mp4" target="visor">01 Las algas siempre son verdes</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008182416if_/http://www.bitview.net/videos/RNI4QgZxmK1zxHNn_0Y0.mp4" target="visor">02 El salvavidas Esponja en acción!</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.vidlii.com/usfi/v/y_A43No7hWh.-pk3Gi4s20R8QEj6TpqkthG_qmg2fo96WBD8tL8gd64pc33w0WHxv7zOlMWnKGGQ6Q7GRsiqSxk-cCX-.mp4" target="visor">03 El club de Bob Esponja</a></p>
-<p><img src="vid.gif"> <a class="linksdelaslistas" href="https://pomf2.lain.la/f/vktaj0od.mp4" target="visor">04 Mi hermoso caballo de mar</a></p>
+<p><img src="vid.gif"> <a class="linksdelaslistas" href="" target="visor">04 Mi hermoso caballo de mar</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://files.catbox.moe/9kslhw.mp4" target="visor">05 Solo un bocado</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://chibi.iitranq.co.uk/fPyONNSf66VU.mp4" target="visor">06 El abusador</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://files.catbox.moe/8r7qat.mp4" target="visor">07 Una cangreburguer inmunda</a></p>
@@ -39,8 +54,8 @@
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008234307if_/https://www.bitview.net/videos/wMivaf1cd_i7ADSbX6qB.mp4" target="visor">17 Don Robot</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.blogger.com/video.g?token=AD6v5dw0zDAH9NDVpoL5vON4DxipRP_J-zZgvRFm82fKFHXV9jRyic2N0BY4wYSOX0nlpGY5hhHwKDsqOz_sxRMlSyzP6bq09L5P5bP9LglxAIT6fVhFfTRn6qGMDbDMOSPEXvtU3H8" target="visor">18 Duermete mi molusco</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.blogger.com/video.g?token=AD6v5dwOK5sN67CmcX4oI5VTpQR2qVyyAptIKou4nHwwnG8mA8T7awAjeFtt6OOT0UgqrRZcnjBIVHTt_2KjoM1UFUpPJlb_99MhkutCqP84YisfmJLBC883l6haDMEg8DTevNt-Ed2m" target="visor">19 Pintores mojados</a></p>
-<p><img src="vid.gif"> <a class="linksdelaslistas" href="https://pomf2.lain.la/f/gcusg4g.mp4" target="visor">20 Video de entrenamiento del Crustaceo Cascarudo</a></p>
-<p><img src="vid.gif"> <a class="linksdelaslistas" href="https://pomf2.lain.la/f/7bn37qp1.mp4" target="visor">21 La fiesta de Bob Esponja (incluye fragmentos de Parche)</a></p>
+<p><img src="vid.gif"> <a class="linksdelaslistas" href="" target="visor">20 Video de entrenamiento del Crustaceo Cascarudo</a></p>
+<p><img src="vid.gif"> <a class="linksdelaslistas" href="" target="visor">21 La fiesta de Bob Esponja (incluye fragmentos de Parche)</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.blogger.com/video.g?token=AD6v5dxOWb9B-TpxC3DC8tNFPJ5Afw2kr5RYlsMh8Q2Q5QHCvLQbR6MJgxd1PmlUr8ahbrOgz6qouYOFJMKTewoadqNW-NN70pJqcAJD5CFcBAhUKcGW60gdZEP_evzRSx32QAHj9cw" target="visor">22 Chocolate con nueces</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211009054424if_/https://www.bitview.net/videos/hpdlfTnMyqgOOJdryv1e.mp4" target="visor">23 Sirenoman y Chico Percebe V</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.blogger.com/video.g?token=AD6v5dztUPTFWYzRjnv8UVtW0Qa3_gZ1_PY6kZBJZLO4e0mGf4VJtxUoeMSX7XvjFc1E-j-kx_a2LV85aI1ODzDcxbrxNJTPzREf0zXlewpU03JJKu1tWD1pGHd1PhQEUO4ucrf82lEZ" target="visor">24 Nuevo alumno Estrella (bajar volumen)</a></p>
@@ -48,17 +63,111 @@
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://video.wixstatic.com/video/9cd106_7114503559404778a6c54f33b63c0db4/480p/mp4/file.mp4" target="visor">26 UGH (Bob Esponja antes de la comedia) (incluye fragmentos de Parche)</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.blogger.com/video.g?token=AD6v5dxclmvDPZsgmMPZ4qpwQbmD8d2JkJkZGAsvFLI4mYX2H2tLQDdkvp3n3KhUcGCZX9Ro3_rfzJ-XfjlKtXvZlrvpTF09Pfz-AmBYdJi-0TfkZAzuoMJoinPbECfUgJkBoTbmj3o" target="visor">27 La gran carrera de caracoles</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.blogger.com/video.g?token=AD6v5dweJDi0uRujdM_MyoSYEZ8b1T-MBeiecYnxQyTKds7ZDXEcZNYuLRYBG2Kw5BETE1N13bDOxDjj3Df-UeuPe3gMijxjHwv38ZSMqFvtXx1XeZObCK_F4isPJHgXB379z7tgyv1V" target="visor">28 Crustaceo maduro (bajar volumen)</a></p>
-<p><img src="vid.gif"> <a class="linksdelaslistas" href="https://pomf2.lain.la/f/7wfa6311.mp4" target="visor">29 Don Cangrejo nace de  nuevo</a></p>
+<p><img src="vid.gif"> <a class="linksdelaslistas" href="" target="visor">29 Don Cangrejo nace de  nuevo</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.blogger.com/video.g?token=AD6v5dxdHYP_R6h8GDvhpUrtxGnZ2bwBF8ApybA3PMQ9LU_yiq6-2BIqpKjpDeA5DweLWTwRPS1BBTgJ-mWOJTbGTGNn7wyS0a3lzZOCo41SSX_sLs0Ukj6-VrZEdernrrKA0wNGK5I-" target="visor">30 Tuve un accidente (bajar volumen)</a></p>
-<p><img src="vid.gif"> <a class="linksdelaslistas" href="https://pomf2.lain.la/f/6b3rvz9r.mp4" target="visor">31 Cascarudolandia</a></p>
-<p><img src="vid.gif"> <a class="linksdelaslistas" href="https://cldup.com/transcoded/y-djXViUjw.mp4.mp4" target="visor">32 El episodio de camping</a></p>
+<p><img src="vid.gif"> <a class="linksdelaslistas" href="" target="visor">31 Cascarudolandia</a></p>
+<p><img src="vid.gif"> <a class="linksdelaslistas" href="" target="visor">32 El episodio de camping</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.vidlii.com/usfi/v/Lc48bS-UvKS.zdIWboZUs765-76aFK18Wd98cB-NAvQQyKaTpEsFnO7Zz5C2F_XlnJASSGT3iu33SomdEd_bJWDBKQCb.mp4" target="visor">33 Identidad perdida</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.vidlii.com/usfi/v/hIgCsNEeKFQ.09IML41TOLoPBi0Kmgk_AMFJ4LXRG0g8Q2T-tgKYmy-z4oIt3iOuAMO8x3ms2LnS_Ir3BEfEajGI2Sif.mp4" target="visor">34 El ejercito de Plankton</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.vidlii.com/usfi/v/dnSx8t3JyaT.Q2e5a-wK381aBRBwxFSvkZvgnhag2K4hTJjR4XsVsSHjAefGcskDvmvDpiHbFpo5pETfx1bxv_jeukAh.mp4" target="visor">35 La esponja que podia volar (incluye fragmentos de Parche)</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.vidlii.com/usfi/v/MiO8JO4S1D0.CYFvvldp1UIqXLce4e--9GvsFSW5QjgMu99Zvc2FqtNsHbZRCkl6GiubMzMVZFoe06U29WuLYtuHXT-B.mp4" target="visor">36 Bob Esponja conoce al estrangulador</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20210703185323if_/https://www.bitview.net/videos/5h_l2ucnUpuxy_RshyV1.mp4" target="visor">37 Bromistas</a></p>
 
+</div>
 
+<script>
+
+let resultados = [];
+let posicion = -1;
+
+function limpiar(){
+    let marks = document.querySelectorAll("mark");
+    marks.forEach(m=>{
+        let text = document.createTextNode(m.textContent);
+        m.parentNode.replaceChild(text,m);
+    });
+}
+
+function buscar(){
+
+    limpiar();
+    resultados = [];
+    posicion = -1;
+
+    let palabra = document.getElementById("searchInput").value.trim();
+
+    if(palabra === "") return;
+
+    let contenido = document.getElementById("contenido");
+
+    let regex = new RegExp(palabra,"gi");
+
+    contenido.innerHTML = contenido.innerHTML.replace(regex, match =>
+        `<mark>${match}</mark>`
+    );
+
+    resultados = document.querySelectorAll("mark");
+
+    if(resultados.length > 0){
+        posicion = 0;
+        actualizar();
+    }
+
+    document.getElementById("contador").innerText =
+        resultados.length + " resultados";
+}
+
+function actualizar(){
+
+    resultados.forEach(r=>r.classList.remove("active"));
+
+    if(posicion >=0 && posicion < resultados.length){
+
+        let el = resultados[posicion];
+
+        el.classList.add("active");
+
+        el.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+        document.getElementById("contador").innerText =
+            (posicion+1) + " / " + resultados.length;
+    }
+}
+
+function next(){
+
+    if(resultados.length === 0) return;
+
+    posicion++;
+
+    if(posicion >= resultados.length)
+        posicion = 0;
+
+    actualizar();
+}
+
+function prev(){
+
+    if(resultados.length === 0) return;
+
+    posicion--;
+
+    if(posicion < 0)
+        posicion = resultados.length-1;
+
+    actualizar();
+}
+
+document.getElementById("searchInput").addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        buscar();
+    }
+});
+
+</script>
 
 
 
@@ -67,4 +176,3 @@
 <div class="divultimo"></div>
 </body>
 </html>
-
