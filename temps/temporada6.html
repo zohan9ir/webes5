@@ -12,15 +12,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style>
-
+#searchBox{
+position:fixed;
+top:0px;
+width:99%;
+background-color:orange;
+}
 </style>
 
 </head>
 <body>
 <audio autoplay src="../sonido.mp3"></audio>
 
-<p>Temporada 6:</p>
-<p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008175929if_/https://www.bitview.net/videos/jy_od0aUoEFwpv_53lpa.mp4" target="visor">01 Casa elegante</a></p>
+<div id="searchBox">
+<input type="text" id="searchInput" placeholder="Buscar episodio...">
+<button onclick="buscar()">Buscar</button>
+<button onclick="prev()">↑</button>
+<button onclick="next()">↓</button>
+<span id="contador"></span>
+<h4>Temporada 6:</h4>
+</div>
+
+<div id="contenido">
+
+<p style="padding-top:68px;"><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008175929if_/https://www.bitview.net/videos/jy_od0aUoEFwpv_53lpa.mp4" target="visor">01 Casa elegante</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008214646if_/https://www.bitview.net/videos/1Yvl09hh6SIdp36w4uAW.mp4" target="visor">02 Camino cangrejoso</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008230019if_/https://www.bitview.net/videos/jNUw7YKDkoCfFcjii0Zp.mp4" target="visor">03 Loco por un centavo</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008225917if_/https://www.bitview.net/videos/M8c6XoXprQA4EcjW6wJT.mp4" target="visor">04 Novicio nautico</a></p>
@@ -68,7 +83,101 @@
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20240828072419if_/https://small.fileditchnew.ch/s3/gMrCzBnpIcwQAWWMlLQK.mp4" target="visor">46 Cavernas de carnada</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://pomf2.lain.la/f/gvfgor4z.mp4" target="visor">47 Duelo de tritones</a></p>
 
+</div>
 
+<script>
+
+let resultados = [];
+let posicion = -1;
+
+function limpiar(){
+    let marks = document.querySelectorAll("mark");
+    marks.forEach(m=>{
+        let text = document.createTextNode(m.textContent);
+        m.parentNode.replaceChild(text,m);
+    });
+}
+
+function buscar(){
+
+    limpiar();
+    resultados = [];
+    posicion = -1;
+
+    let palabra = document.getElementById("searchInput").value.trim();
+
+    if(palabra === "") return;
+
+    let contenido = document.getElementById("contenido");
+
+    let regex = new RegExp(palabra,"gi");
+
+    contenido.innerHTML = contenido.innerHTML.replace(regex, match =>
+        `<mark>${match}</mark>`
+    );
+
+    resultados = document.querySelectorAll("mark");
+
+    if(resultados.length > 0){
+        posicion = 0;
+        actualizar();
+    }
+
+    document.getElementById("contador").innerText =
+        resultados.length + " resultados";
+}
+
+function actualizar(){
+
+    resultados.forEach(r=>r.classList.remove("active"));
+
+    if(posicion >=0 && posicion < resultados.length){
+
+        let el = resultados[posicion];
+
+        el.classList.add("active");
+
+        el.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+        document.getElementById("contador").innerText =
+            (posicion+1) + " / " + resultados.length;
+    }
+}
+
+function next(){
+
+    if(resultados.length === 0) return;
+
+    posicion++;
+
+    if(posicion >= resultados.length)
+        posicion = 0;
+
+    actualizar();
+}
+
+function prev(){
+
+    if(resultados.length === 0) return;
+
+    posicion--;
+
+    if(posicion < 0)
+        posicion = resultados.length-1;
+
+    actualizar();
+}
+
+document.getElementById("searchInput").addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        buscar();
+    }
+});
+
+</script>
 
 
 
