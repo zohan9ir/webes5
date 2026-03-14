@@ -12,15 +12,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style>
-
+#searchBox{
+position:fixed;
+top:0px;
+width:99%;
+background-color:orange;
+}
 </style>
 
 </head>
 <body>
 <audio autoplay src="../sonido.mp3"></audio>
+<div id="searchBox">
+<input type="text" id="searchInput" placeholder="Buscar episodio...">
+<button onclick="buscar()">Buscar</button>
+<button onclick="prev()">↑</button>
+<button onclick="next()">↓</button>
+<span id="contador"></span>
+<h4>Temporada 4:</h4>
+</div>
 
-<p>Temporada 4:</p>
-<p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008233814if_/https://www.bitview.net/videos/AYBDCe9tft2KfrcQah0t.mp4" target="visor">01 Temele a una cangreburguer</a></p>
+<div id="contenido">
+
+<p style="padding-top:68px;"><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008233814if_/https://www.bitview.net/videos/AYBDCe9tft2KfrcQah0t.mp4" target="visor">01 Temele a una cangreburguer</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211009050707if_/https://www.bitview.net/videos/puZxKQtiVzcD_q79cJ4Q.mp4" target="visor">02 El caparazón de un hombre</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20211008181750if_/http://www.bitview.net/videos/P8AyNDlYauETKTwzvdZJ.mp4" target="visor">03 El colchón perdido</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.blogger.com/video.g?token=AD6v5dw7xFQmD40z424GPBoH-9Szgebcz5dkwi2qS-LXvpFNg0KsH_1yBZgNPWkzDpclVuP5SqT57R_SjC2k-x3jPtPynhrHDC-GXnfMqxXgMhw0BNueOPMrCPa5kZzRSn7bGD9hcwc-" target="visor">04 Cangrejo contra Plankton</a></p>
@@ -59,7 +73,101 @@
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://web.archive.org/web/20201203071822if_/https://video.wixstatic.com/video/957f15_9668f3a6347a4c078c8d65196cf528f3/480p/mp4/file.mp4" target="visor">37 El mejor dia</a></p>
 <p><img src="vid.gif"> <a class="linksdelaslistas" href="https://www.blogger.com/video.g?token=AD6v5dyddsoVVJm7y2KNZXFjberov8TCLVQvSpa3BqYBNSFCaSvMH6iv-yJmk1Uj19O43CbkJS8rMbe6sGNxaMFXWXH_sAwK3hg4Uh0YTnwQ1V6wufNcEHFlLlC1j2ovboxtYzGV5rc4" target="visor">38 El regalo de goma</a></p>
 
+</div>
 
+<script>
+
+let resultados = [];
+let posicion = -1;
+
+function limpiar(){
+    let marks = document.querySelectorAll("mark");
+    marks.forEach(m=>{
+        let text = document.createTextNode(m.textContent);
+        m.parentNode.replaceChild(text,m);
+    });
+}
+
+function buscar(){
+
+    limpiar();
+    resultados = [];
+    posicion = -1;
+
+    let palabra = document.getElementById("searchInput").value.trim();
+
+    if(palabra === "") return;
+
+    let contenido = document.getElementById("contenido");
+
+    let regex = new RegExp(palabra,"gi");
+
+    contenido.innerHTML = contenido.innerHTML.replace(regex, match =>
+        `<mark>${match}</mark>`
+    );
+
+    resultados = document.querySelectorAll("mark");
+
+    if(resultados.length > 0){
+        posicion = 0;
+        actualizar();
+    }
+
+    document.getElementById("contador").innerText =
+        resultados.length + " resultados";
+}
+
+function actualizar(){
+
+    resultados.forEach(r=>r.classList.remove("active"));
+
+    if(posicion >=0 && posicion < resultados.length){
+
+        let el = resultados[posicion];
+
+        el.classList.add("active");
+
+        el.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+        document.getElementById("contador").innerText =
+            (posicion+1) + " / " + resultados.length;
+    }
+}
+
+function next(){
+
+    if(resultados.length === 0) return;
+
+    posicion++;
+
+    if(posicion >= resultados.length)
+        posicion = 0;
+
+    actualizar();
+}
+
+function prev(){
+
+    if(resultados.length === 0) return;
+
+    posicion--;
+
+    if(posicion < 0)
+        posicion = resultados.length-1;
+
+    actualizar();
+}
+
+document.getElementById("searchInput").addEventListener("keypress", function(e){
+    if(e.key === "Enter"){
+        buscar();
+    }
+});
+
+</script>
 
 
 
