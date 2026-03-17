@@ -47,6 +47,10 @@ font-family:arial;
 text-decoration:underline;
 }
 
+.linksdelaslistas:visited{
+color:#5e5fab;
+}
+
 .iframedelalistaquevadentrodelotroiframe{
 width:100%;
 border:none;
